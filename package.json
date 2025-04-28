@@ -1,0 +1,41 @@
+{
+  "name": "bunberry",
+  "version": "0.0.1",
+  "description": "CLI to create Bun projects",
+  "type": "module",
+  "bin": {
+    "bunberry": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "bun build ./src/index.ts --outdir ./dist --target node",
+    "dev": "bun run src/index.ts",
+    "test": "bun test",
+    "test:integration": "bun test tests/integration.test.ts",
+    "docker:test": "docker build -t bunberry-test . && docker run bunberry-test",
+    "docker:test:with-bun": "docker build --target test-with-bun -t bunberry-test-with-bun . && docker run bunberry-test-with-bun"
+  },
+  "dependencies": {
+    "commander": "^11.1.0",
+    "inquirer": "^9.2.12"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^9.0.7",
+    "bun-types": "latest"
+  },
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rudrodip/bunberry"
+  },
+  "author": "rudrodip",
+  "license": "MIT",
+  "keywords": [
+    "bunberry",
+    "bunberry-cli",
+    "bunberry-cli-template",
+    "bunberry-cli-template-typescript"
+  ]
+}
