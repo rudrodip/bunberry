@@ -62,7 +62,10 @@ program
       }
     ]);
 
-    const projectName = folderName || answers.projectName;
+    if (folderName) {
+      answers.projectName = folderName;
+    }
+    const projectName = answers.projectName;
     const projectPath = path.join(process.cwd(), projectName);
 
     try {
