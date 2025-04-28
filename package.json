@@ -10,6 +10,7 @@
     "build": "bun build ./src/index.ts --outdir ./dist --target node",
     "dev": "bun run src/index.ts",
     "test": "bun test",
+    "publish": "bun run build && npm publish --access public",
     "test:integration": "bun test tests/integration.test.ts",
     "docker:test": "docker build -t bunberry-test . && docker run bunberry-test",
     "docker:test:with-bun": "docker build --target test-with-bun -t bunberry-test-with-bun . && docker run bunberry-test-with-bun"
