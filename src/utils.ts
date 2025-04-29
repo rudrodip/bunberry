@@ -162,6 +162,7 @@ export async function generatePackageJson(projectPath: string, config: {
     name: config.name,
     version: "0.0.1", 
     description: config.description,
+    module: "dist/index.js",
     type: "module",
     scripts: config.type === "Library" ? {
       "dev": "bun run src/index.ts",
@@ -172,7 +173,8 @@ export async function generatePackageJson(projectPath: string, config: {
     } : {
       build: "bun build ./src/index.ts --outdir ./dist --target node",
       dev: "bun run src/index.ts",
-      test: "bun test"
+      test: "bun test",
+      publish: "bun run build && npm publish --access public"
     },
     bin: config.type === "library" ? undefined : {
       [config.name]: "./dist/index.js"
@@ -192,7 +194,6 @@ export async function generatePackageJson(projectPath: string, config: {
       url: `https://github.com/${config.author}/${config.name}`
     },
     author: config.author,
-    license: "MIT",
     keywords: [
       config.name,
     ]
